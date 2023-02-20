@@ -1,0 +1,92 @@
+body
+{
+    margin: 80px;
+    margin-top: 0px;
+    background-color: black;
+    color: white;
+}
+
+h1
+{
+    text-align: center;
+    font-size: 40px;
+}
+h2
+{
+    text-align: center;
+    font-size: 30px;
+}
+
+#selects
+{
+    text-align: center;
+    display: block;
+}
+#selects div
+{
+    margin: auto;
+}
+
+#selects select
+{
+    text-align: center;
+    height: 40px;
+    width: 120px;
+    font-size: 20px;
+    
+}
+
+#Infos
+{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+
+table
+{
+    text-align: center;
+    margin: auto;
+}
+
+td
+{
+   padding: 4px;
+   padding-left: 30px;
+   padding-right: 30px;
+}
+
+th
+{
+    font-size: 20px;
+    border-bottom: solid white 1px;
+}
+
+#Infos section
+{
+    width: 330px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid white;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+}
+
+label
+{
+    font-size: 25px;
+}
+
+select
+{
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    border: 2px solid white;
+}
+
+a
+{
+    color: white;
+}

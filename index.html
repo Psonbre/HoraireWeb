@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Horaire</title>
+</head>
+<body>
+    <h1 id="title">Horaire des BG</h1>
+    <div id="selects">   
+        <div>
+            <div class="selectLabelDiv">
+                <label for="nameSelect" id="nameSelectLabel">Personne : </label>
+            </div>
+    
+            <div class="selectDiv">
+                <select name="nameSelect" id="nameSelect" onchange="updateInfo()"><option value="null">loading...</option></select>
+            </div>
+            
+        </div>
+        <div>
+            <div class="selectLabelDiv">
+                <label for="daySelect" id="daySelectLabel">Jour : </label>
+            </div>
+            <div class="selectDiv">
+                <select name="daySelect" id="daySelect" onchange="updateInfo()">
+                    <option value="Lundi">Lundi</option>
+                    <option value="Mardi">Mardi</option>
+                    <option value="Mercredi">Mercredi</option>
+                    <option value="Jeudi">Jeudi</option>
+                    <option value="Vendredi">Vendredi</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <section id="Infos">
+        <section id="enPause">
+            <h2>Personnes en pause présentement</h2>
+            <table id="breakSchedule">
+                <tr>
+                    <th>Loading...</th>
+                </tr>
+            </table>
+        </section>
+        <section id="horaireComplet">
+            <h2>Horaire Complet</h2>
+            <table id="nameSchedule">
+                <tr>
+                    <th>Loading...</th>
+                </tr>
+            </table>
+        </section>
+        <section id="matchingBreaks">
+            <h2>Personnes en pause avec </h2>
+            <table id="matchingBreaksTable">
+                <tr>
+                    <th>Loading...</th>
+                </tr>
+            </table>
+        </section>
+        <section id="classEnd">
+            <h2>Heures de fin</h2>
+            <table id="classEndTable">
+                <tr>
+                    <th>Loading...</th>
+                </tr>
+            </table>
+        </section>
+    </section>
+    
+</body>
+<footer><a href="https://docs.google.com/spreadsheets/d/1TIGTxzLnmkzUwCiPE5tDnaisLqefHILqkb30qJ62934/edit#gid=0" target="#">Modifier les horaires</a></footer>
+</html>
