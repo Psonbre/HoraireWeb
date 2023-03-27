@@ -1,4 +1,4 @@
-const API_KEY = 'AIzaSyC1y596rlFXz5YPoy-LeL4rIFGcBt-QS7g';
+const API_KEY = 'AIzaSyAe8eP7ELj_j_lEx5NR3Sg2tUSANPrFk5k';
 const SHEET_ID = '1TIGTxzLnmkzUwCiPE5tDnaisLqefHILqkb30qJ62934';
 
 nameSelect = document.querySelector("#nameSelect")
