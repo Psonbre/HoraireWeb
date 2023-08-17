@@ -12,6 +12,7 @@ matchingBreaksTable = document.querySelector("#matchingBreaksTable")
 matchingBreaks = document.querySelector("#matchingBreaks")
 studentCount = 0
 scheduleData = []
+trueStudentOrder = []
 date = new Date()
 const daysOfTheWeek = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi"]
 
@@ -20,17 +21,17 @@ function updateMatchingBreaks()
     dayIndex = daySelect.selectedIndex
     matchingBreaks.querySelector("h2").innerHTML = `En pause avec ${nameSelect.value} ${daySelect.value.toLowerCase()}`
     matchingBreaksTable.innerHTML = ""
-
+    trueStudentIndex = trueStudentOrder.indexOf(nameSelect.value)+1
     for (let i = 0; i < 10; i++) {
-        timeFrame = getStartAndEnd(nameSelect.selectedIndex+1,(i+2)+(11*dayIndex))
-        if (scheduleData[nameSelect.selectedIndex+1][(i+2)+(11*dayIndex)] == "Pause")
+        timeFrame = getStartAndEnd(trueStudentIndex,(i+2)+(11*dayIndex))
+        if (scheduleData[trueStudentIndex][(i+2)+(11*dayIndex)] == "Pause")
         {
             for (let personIndex = 1; personIndex <= studentCount; personIndex++) 
             {
                 if (scheduleData[personIndex][(i+2)+(11*dayIndex)] == "Pause")
                 {
                     timeFrame2 = getStartAndEnd(personIndex,(i+2)+(11*dayIndex))
-                    if (!document.getElementById(`nameMatchingBreak-${personIndex}-${timeFrame2}`) && personIndex != nameSelect.selectedIndex+1)
+                    if (!document.getElementById(`nameMatchingBreak-${personIndex}-${timeFrame2}`) && personIndex != trueStudentIndex)
                     {
                         if (!document.getElementById("matchingBreak-"+timeFrame))
                             matchingBreaksTable.innerHTML+= `<th id="matchingBreak-${timeFrame}">${timeFrame}</th>`  
@@ -76,10 +77,10 @@ function getClassEnd(personIndex, dayIndex)
 
 function updateHoraireComplet()
 {
+    trueStudentIndex = trueStudentOrder.indexOf(nameSelect.value)+1
     dayIndex = daySelect.selectedIndex
     horaireComplet.querySelector("h2").innerHTML = `Horaire (${nameSelect.value}-${daySelect.value})`
-
-    currentDaySchedule = scheduleData[nameSelect.selectedIndex+1].slice(2+(11*dayIndex),12+(11*dayIndex))
+    currentDaySchedule = scheduleData[trueStudentIndex].slice(2+(11*dayIndex),12+(11*dayIndex))
 
     loopIndex = 0
     nameSchedule.innerHTML = "<tr><th>Heure</th><th>Cours</th></tr>"
@@ -159,6 +160,8 @@ fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/A:A?valu
 .then(data => {
     data.values.shift()
     values = data.values
+    values.forEach(value => { trueStudentOrder.push(value[0])});
+    values.sort()
     document.querySelector("#nameSelect").innerHTML = ""
     values.forEach(value => {
         document.querySelector("#nameSelect").innerHTML += `<option value="${value}">${value}</option>`
