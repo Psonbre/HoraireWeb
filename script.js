@@ -167,6 +167,10 @@ fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/A:A?valu
         document.querySelector("#nameSelect").innerHTML += `<option value="${value}">${value}</option>`
     });
 
+    if (localStorage.getItem("selectedName")){
+        nameSelect.value = localStorage.getItem("selectedName")
+    }
+
     fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/A1:CG${values.length+1}?valueRenderOption=UNFORMATTED_VALUE&key=${API_KEY}`)
     .then(response => response.json())
     .then(data => {
@@ -187,6 +191,9 @@ fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/A:A?valu
 });
 
 
+nameSelect.addEventListener("change", () => {
+    localStorage.setItem("selectedName",nameSelect.value)
+})
 
 
 
